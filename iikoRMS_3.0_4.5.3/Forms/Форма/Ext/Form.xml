@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.6">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -276,6 +276,12 @@
 																		<Event name="Opening">КаталогЭкспортаОткрытие</Event>
 																	</Events>
 																</InputField>
+																<CheckBoxField name="СерверныйРежим" id="1176">
+																	<DataPath>СерверныйРежим</DataPath>
+																	<CheckBoxType>Auto</CheckBoxType>
+																	<ContextMenu name="СерверныйРежимКонтекстноеМеню" id="1177"/>
+																	<ExtendedTooltip name="СерверныйРежимРасширеннаяПодсказка" id="1178"/>
+																</CheckBoxField>
 															</ChildItems>
 														</Page>
 													</ChildItems>
@@ -1886,6 +1892,7 @@
 									<ChildItems>
 										<Table name="Докум" id="73">
 											<Representation>List</Representation>
+											<UseAlternationRowColor>true</UseAlternationRowColor>
 											<AutoInsertNewRow>true</AutoInsertNewRow>
 											<EnableStartDrag>true</EnableStartDrag>
 											<EnableDrag>true</EnableDrag>
@@ -1896,7 +1903,83 @@
 											<RowFilter xsi:nil="true"/>
 											<ContextMenu name="ДокумКонтекстноеМеню" id="74"/>
 											<AutoCommandBar name="ДокумКоманднаяПанель" id="75">
-												<Autofill>false</Autofill>
+												<ChildItems>
+													<ButtonGroup name="ДокумГруппаВыделить" id="1188">
+														<Title>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Докум группа выделить</v8:content>
+															</v8:item>
+														</Title>
+														<ToolTip>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Докум группа выделить</v8:content>
+															</v8:item>
+														</ToolTip>
+														<Representation>Compact</Representation>
+														<ExtendedTooltip name="ДокумГруппаВыделитьРасширеннаяПодсказка" id="1189"/>
+														<ChildItems>
+															<Button name="ВыбратьВсе" id="1182">
+																<Type>CommandBarButton</Type>
+																<CommandName>Form.Command.ДокументыВыбратьВсе</CommandName>
+																<Picture>
+																	<xr:Ref>StdPicture.CheckAll</xr:Ref>
+																	<xr:LoadTransparent>true</xr:LoadTransparent>
+																</Picture>
+																<ExtendedTooltip name="ВыбратьВсеРасширеннаяПодсказка" id="1183"/>
+															</Button>
+															<Button name="СнятьВсе" id="1184">
+																<Type>CommandBarButton</Type>
+																<CommandName>Form.Command.ДокументыСнятьВсе</CommandName>
+																<Picture>
+																	<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+																	<xr:LoadTransparent>true</xr:LoadTransparent>
+																</Picture>
+																<ExtendedTooltip name="СнятьВсеРасширеннаяПодсказка" id="1185"/>
+															</Button>
+															<Button name="ИнвертироватьВыбор" id="1186">
+																<Type>CommandBarButton</Type>
+																<CommandName>Form.Command.ДокументыИнвертироватьВыбор</CommandName>
+																<Picture>
+																	<xr:Ref>CommonPicture.ИнвертироватьФлажки</xr:Ref>
+																	<xr:LoadTransparent>true</xr:LoadTransparent>
+																</Picture>
+																<ExtendedTooltip name="ИнвертироватьВыборРасширеннаяПодсказка" id="1187"/>
+															</Button>
+														</ChildItems>
+													</ButtonGroup>
+													<ButtonGroup name="ДокумГруппаКомандыФорма" id="1190">
+														<Title>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Докум группа команды форма</v8:content>
+															</v8:item>
+														</Title>
+														<ToolTip>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Докум группа команды форма</v8:content>
+															</v8:item>
+														</ToolTip>
+														<Representation>Compact</Representation>
+														<ExtendedTooltip name="ДокумГруппаКомандыФормаРасширеннаяПодсказка" id="1191"/>
+														<ChildItems>
+															<Button name="ДокумСортироватьСписокПоВозрастанию" id="1194">
+																<Type>CommandBarButton</Type>
+																<OnlyInAllActions>true</OnlyInAllActions>
+																<CommandName>73:2bbe4e12-06d2-409b-a972-eea585125d83</CommandName>
+																<ExtendedTooltip name="ДокумСортироватьСписокПоВозрастаниюРасширеннаяПодсказка" id="1195"/>
+															</Button>
+															<Button name="ДокумСортироватьСписокПоУбыванию" id="1196">
+																<Type>CommandBarButton</Type>
+																<OnlyInAllActions>true</OnlyInAllActions>
+																<CommandName>73:58b2a785-23f6-4b0e-a324-9a1323285595</CommandName>
+																<ExtendedTooltip name="ДокумСортироватьСписокПоУбываниюРасширеннаяПодсказка" id="1197"/>
+															</Button>
+														</ChildItems>
+													</ButtonGroup>
+												</ChildItems>
 											</AutoCommandBar>
 											<ExtendedTooltip name="ДокумExtendedTooltip" id="946"/>
 											<SearchStringAddition name="ДокумСтрокаПоиска" id="1116">
@@ -1948,6 +2031,18 @@
 													</Title>
 													<EditMode>EnterOnInput</EditMode>
 													<Width>15</Width>
+													<Format>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>ДФ=dd.MM.yyyy</v8:content>
+														</v8:item>
+													</Format>
+													<EditFormat>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>ДФ=dd.MM.yyyy</v8:content>
+														</v8:item>
+													</EditFormat>
 													<ContextMenu name="ДокумДатаКонтекстноеМеню" id="83"/>
 													<ExtendedTooltip name="ДокумДатаExtendedTooltip" id="949"/>
 												</InputField>
@@ -2081,7 +2176,8 @@
 								</Button>
 								<Button name="Выполнить" id="240">
 									<Type>UsualButton</Type>
-									<Width>9</Width>
+									<DefaultButton>true</DefaultButton>
+									<Width>11</Width>
 									<CommandName>Form.Command.Выполнить</CommandName>
 									<ExtendedTooltip name="ВыполнитьExtendedTooltip" id="961"/>
 								</Button>
@@ -4300,7 +4396,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Статьи прочих доходов и расходов </v8:content>
+					<v8:content>Статьи прочих доходов и расходов</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -4444,6 +4540,75 @@
 				<v8:Type>cfg:EnumRef.ОтражениеВУСН</v8:Type>
 			</Type>
 		</Attribute>
+		<Attribute name="СерверныйРежим" id="98">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Серверный режим</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<Save>
+				<Field>СерверныйРежим</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="СоответствиеФайлов" id="99">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Соответствие файлов</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ИмяФайла" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя файла</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ИмяВрФайла" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя вр файла</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="АктивироватьНеПриниматьКУчету" id="100">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Активировать не принимать к учету</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
 		<ConditionalAppearance>
 			<dcsset:item>
 				<dcsset:selection>
@@ -4543,7 +4708,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ВыбратьВсе</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="СнятьВсе" id="2">
 			<Title>
@@ -4559,7 +4723,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>СнятьВсе</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="Загрузка" id="3">
 			<Title>
@@ -4575,7 +4738,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ЗагрузитьНажатие</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="Выполнить" id="4">
 			<Title>
@@ -4591,7 +4753,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ВыполнитьКнопка</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="Период" id="5">
 			<Title>
@@ -4607,7 +4768,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>Период</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="КонтрагентыСоздать" id="6">
 			<Title>
@@ -4623,7 +4783,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>КонтрагентыСоздать</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="КонтрагентыСоздатьВсех" id="7">
 			<Title>
@@ -4639,7 +4798,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>КонтрагентыСоздатьВсех</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="КонтрагентыЗаполнить" id="8">
 			<Title>
@@ -4655,7 +4813,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>КонтрагентыЗаполнить</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="КонтрагентыОчистить" id="9">
 			<Title>
@@ -4671,7 +4828,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>КонтрагентыОчистить</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="НоменклатураСоздать" id="10">
 			<Title>
@@ -4687,7 +4843,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>НоменклатураСоздать</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="НоменклатураСоздатьВсе" id="11">
 			<Title>
@@ -4703,7 +4858,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>НоменклатураСоздатьВсе</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ЗаполнитьНоменклатура" id="12">
 			<Title>
@@ -4719,7 +4873,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ЗаполнитьНоменклатура</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ОчиститьНоменклатура" id="13">
 			<Title>
@@ -4735,7 +4888,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ОчиститьНоменклатура</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ГруппировкаСоздать" id="14">
 			<Title>
@@ -4751,7 +4903,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ГруппировкаСоздать</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ГруппировкаСоздатьВсе" id="15">
 			<Title>
@@ -4767,7 +4918,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ГруппировкаСоздатьВсе</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ЗаполнитьГруппировка" id="16">
 			<Title>
@@ -4783,7 +4933,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ЗаполнитьГруппировка</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ОчиститьГруппировка" id="17">
 			<Title>
@@ -4798,7 +4947,6 @@
 					<v8:content>Очистить группировка</v8:content>
 				</v8:item>
 			</ToolTip>
-			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="СкладыСоздать" id="18">
 			<Title>
@@ -4814,7 +4962,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>СкладыСоздать</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="СкладыСоздатьВсе" id="19">
 			<Title>
@@ -4830,7 +4977,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>СкладыСоздатьВсе</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="СкладыЗаполнить" id="20">
 			<Title>
@@ -4846,11 +4992,8 @@
 				</v8:item>
 			</ToolTip>
 			<Action>СкладыЗаполнить</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
-		<Command name="Команда1" id="21">
-			<CurrentRowUse>DontUse</CurrentRowUse>
-		</Command>
+		<Command name="Команда1" id="21"/>
 		<Command name="СкладыОчистить" id="22">
 			<Title>
 				<v8:item>
@@ -4865,7 +5008,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>СкладыОчистить</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="Настройки" id="23">
 			<Title>
@@ -4881,7 +5023,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>Настройки</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="КнопкаСохранить" id="24">
 			<Title>
@@ -4897,7 +5038,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>КнопкаСохранить</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="СохранитьНастройки" id="25">
 			<Title>
@@ -4913,7 +5053,51 @@
 				</v8:item>
 			</ToolTip>
 			<Action>СохранитьНастройки</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ДокументыВыбратьВсе" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать все</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать все</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ДокументыУстановитьВсе</Action>
+		</Command>
+		<Command name="ДокументыСнятьВсе" id="27">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять все</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять выбор со всех</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ДокументыСнятьВсе</Action>
+		</Command>
+		<Command name="ДокументыИнвертироватьВыбор" id="28">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Инвертировать выбор</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Инвертировать выбор</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ДокументыИнвертироватьВыбор</Action>
 		</Command>
 	</Commands>
 	<Parameters>
